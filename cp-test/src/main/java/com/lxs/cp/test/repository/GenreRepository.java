@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.lxs.cp.test.entity.MusicGenderEntity;
+import com.lxs.cp.test.entity.GenreEntity;
 
 @Repository
-public interface MusicGenderRepository extends CrudRepository<MusicGenderEntity, Long> {
-	List<MusicGenderEntity> findAll();
+public interface GenreRepository extends CrudRepository<GenreEntity, Long> {
+	List<GenreEntity> findAll();
 }

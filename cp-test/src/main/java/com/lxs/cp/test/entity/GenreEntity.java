@@ -20,22 +20,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "MusicGender")
-public class MusicGenderEntity {
+@Table(name = "Genre")
+public class GenreEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "MG_Id")
+	@Column(name = "G_Id")
 	private Long id;
 	
 	@NotNull
-	@Column(name = "MG_Name")
+	@Column(name = "G_Name")
 	private String name;
 	
-	@Column(name = "MG_Description")
+	@Column(name = "G_Description")
 	private String description;
 	
 	@NotNull
-	@Column(name = "MG_Enable")
+	@Column(name = "G_Enable")
 	private Byte enable;
 }

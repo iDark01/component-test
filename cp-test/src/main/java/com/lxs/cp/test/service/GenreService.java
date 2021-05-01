@@ -6,25 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
-import com.lxs.cp.test.dto.MusicGenderDto;
-import com.lxs.cp.test.entity.MusicGenderEntity;
-import com.lxs.cp.test.repository.MusicGenderRepository;
+import com.lxs.cp.test.constants.ValueConstants;
+import com.lxs.cp.test.dto.GenreDto;
+import com.lxs.cp.test.entity.GenreEntity;
+import com.lxs.cp.test.repository.GenreRepository;
 
 @Service
-public class MusicGenderService {
-
-	public static final byte ENABLED = 1;
-	public static final byte DISABLED = 0;
+public class GenreService {
 	
 	@Autowired
-	MusicGenderRepository repository;
+	GenreRepository repository;
 	
-	public List<MusicGenderDto> findAll() {
+	public List<GenreDto> findAll() {
 		try {
-			List<MusicGenderEntity> entities = repository.findAll();
-			List<MusicGenderDto> dtos = Lists.newArrayList();
-			for (MusicGenderEntity entity : entities) {
-				MusicGenderDto dto = MusicGenderDto.builder()
+			List<GenreEntity> entities = repository.findAll();
+			List<GenreDto> dtos = Lists.newArrayList();
+			for (GenreEntity entity : entities) {
+				GenreDto dto = GenreDto.builder()
 						.id(entity.getId())
 						.name(entity.getName())
 						.description(entity.getDescription())
@@ -38,11 +36,11 @@ public class MusicGenderService {
 		}
 	}
 	
-	public MusicGenderDto findById(Long id) {
+	public GenreDto findById(Long id) {
 		try {
-			MusicGenderEntity entity = repository.findById(id).orElse(null);
+			GenreEntity entity = repository.findById(id).orElse(null);
 			if(entity == null) return null;
-			return MusicGenderDto.builder()
+			return GenreDto.builder()
 					.id(entity.getId())
 					.name(entity.getName())
 					.description(entity.getDescription())
@@ -53,10 +51,9 @@ public class MusicGenderService {
 		}
 	}
 	
-	public MusicGenderDto create(MusicGenderDto dto) {
+	public GenreDto create(GenreDto dto) {
 		try {
-			MusicGenderEntity entity = MusicGenderEntity.builder()
-					.id(dto.getId())
+			GenreEntity entity = GenreEntity.builder()
 					.name(dto.getName())
 					.description(dto.getDescription())
 					.enable(dto.getEnable())
@@ -69,9 +66,9 @@ public class MusicGenderService {
 		}
 	}
 	
-	public MusicGenderDto update(MusicGenderDto dto) {
+	public GenreDto update(GenreDto dto) {
 		try {
-			MusicGenderEntity entity = repository.findById(dto.getId()).orElse(null);
+			GenreEntity entity = repository.findById(dto.getId()).orElse(null);
 			if(entity == null) return null;
 			entity.setName(dto.getName());
 			entity.setDescription(dto.getDescription());
@@ -83,13 +80,13 @@ public class MusicGenderService {
 		}
 	}
 	
-	public MusicGenderDto delete(Long id) {
+	public GenreDto delete(Long id) {
 		try {
-			MusicGenderEntity entity = repository.findById(id).orElse(null);
+			GenreEntity entity = repository.findById(id).orElse(null);
 			if(entity == null) return null;
-			entity.setEnable(DISABLED);
+			entity.setEnable(ValueConstants.DISABLED);
 			repository.save(entity);
-			return MusicGenderDto.builder()
+			return GenreDto.builder()
 					.id(entity.getId())
 					.name(entity.getName())
 					.description(entity.getDescription())
