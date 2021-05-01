@@ -19,7 +19,9 @@ import org.springframework.http.ResponseEntity;
 
 import com.lxs.cp.test.constants.ValueConstants;
 import com.lxs.cp.test.controller.SubGenreController;
+import com.lxs.cp.test.dto.GenreDto;
 import com.lxs.cp.test.dto.SubGenreDto;
+import com.lxs.cp.test.entity.GenreEntity;
 import com.lxs.cp.test.entity.SubGenreEntity;
 import com.lxs.cp.test.repository.SubGenreRepository;
 import com.lxs.cp.test.service.SubGenreService;
@@ -39,12 +41,31 @@ public class SubGenreControllerTests {
 	 @InjectMocks
 	 SubGenreController controller = new SubGenreController();
 	 
+	 public GenreDto dummyGenreDto() {
+		 return GenreDto.builder()
+				 .id(1L)
+				 .name("")
+				 .description("")
+				 .enable(ValueConstants.ENABLED)
+				 .build();
+	 }
+
+	 public GenreEntity dummyGenreEntity() {
+		 return GenreEntity.builder()
+				 .id(1L)
+				 .name("")
+				 .description("")
+				 .enable(ValueConstants.ENABLED)
+				 .build();
+	 }
+	 
 	 public SubGenreDto dummyDto() {
 		 return SubGenreDto.builder()
 				 .id(1L)
 				 .name("")
 				 .description("")
 				 .enable(ValueConstants.ENABLED)
+				 .genre(dummyGenreDto())
 				 .build();
 	 }
 	 
@@ -54,6 +75,7 @@ public class SubGenreControllerTests {
 				 .name("")
 				 .description("")
 				 .enable(ValueConstants.ENABLED)
+				 .genre(dummyGenreEntity())
 				 .build();
 	 }
 	 
