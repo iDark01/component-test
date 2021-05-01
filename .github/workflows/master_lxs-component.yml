@@ -22,13 +22,13 @@ jobs:
         java-version: '8'
 
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean install --file cp-test/pom.xml
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
-        name: java-app
-        path: '${{ github.workspace }}/target/*.jar'
+        name: cp-test
+        path: '${{ github.workspace }}/cp-test/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
     - name: Download artifact from build job
       uses: actions/download-artifact@v2
       with:
-        name: java-app
+        name: cp-test
 
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
@@ -50,4 +50,4 @@ jobs:
         app-name: 'lxs-component'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_a0c74e9ec2644bb3b5356efae403cc3c }}
-        package: '*.jar'
+        package: '**/*.jar'
