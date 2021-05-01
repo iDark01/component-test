@@ -213,31 +213,26 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
-						<configuration>
-                            <rules>
-                                <rule>
-                                    <element>CLASS</element>
-                                    <excludes>
-                                        <exclude>*Config</exclude>
-                                        <exclude>*Dto</exclude>
-										<exclude>*Entity</exclude>
-										<exclude>*Proxy</exclude>
-                                        <exclude>*Repository</exclude>
-                                        <exclude>*Jwt</exclude>
-                                        <exclude>*Filter</exclude>
-										<exclude>*Handler</exclude>
-										<exclude>*Interceptor</exclude>
-                                        <exclude>*Utils</exclude>
-                                        <exclude>*Constants</exclude>
-                                        <exclude>*Util</exclude>
-                                        <exclude>*Application</exclude>
-                                        <exclude>*Builder</exclude>
-                                        <exclude>*Test</exclude>
-                                        <exclude>*Logger</exclude>
-                                    </excludes>
-                                </rule>
-                            </rules>
-                        </configuration>
+					<configuration>
+						<excludes>
+							<exclude>**/*Config.*</exclude>
+							<exclude>**/*Dto.*</exclude>
+							<exclude>**/*Entity.*</exclude>
+							<exclude>**/*Proxy.*</exclude>
+							<exclude>**/*Repository.*</exclude>
+							<exclude>**/*Jwt.*</exclude>
+							<exclude>**/*Filter.*</exclude>
+							<exclude>**/*Handler.*</exclude>
+							<exclude>**/*Interceptor.*</exclude>
+							<exclude>**/*Utils.*</exclude>
+							<exclude>**/*Constants.*</exclude>
+							<exclude>**/*Util.*</exclude>
+							<exclude>**/*Application.*</exclude>
+							<exclude>**/*Builder.*</exclude>
+							<exclude>**/*Test.*</exclude>
+							<exclude>**/*Logger.*</exclude>
+						</excludes>
+					</configuration>
 					</execution>
 					<execution>
 						<id>coverage-check</id>
