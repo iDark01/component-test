@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+	<property name="APP_NAME" value="cp-test" />
+	<property name="LOG_FOLDER" value="${APP_NAME}_logs" />
+
+	<appender name="CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../${LOG_FOLDER}/${APP_NAME}.log</file>
+		<encoder>
+			<pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level [%thread] %logger{36}.%M - %message%n</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover frequency -->
+			<fileNamePattern>../${LOG_FOLDER}/${APP_NAME}_%d{dd-MM-yyyy}.log
+			</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>
