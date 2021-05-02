@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "music-genre", value = "GenreController")
 @RestController
 @RequestMapping("/cp-test/api/music-genre")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
+//@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
 public class GenreController {
 	
 	@Autowired
